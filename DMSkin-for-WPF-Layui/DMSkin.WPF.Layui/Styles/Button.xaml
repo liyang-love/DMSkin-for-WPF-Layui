@@ -32,20 +32,75 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Foreground" Value="#FF333333"/>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="border" Property="BorderBrush"  Value="#FFe6e6e6"/>
+                            <Setter TargetName="border" Property="Background" Value="#FFFBFBFB"></Setter>
+                            <Setter Property="Foreground"  Value="#FFC9C9C9"></Setter>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style x:Key="OriginalButton.White" TargetType="Button" BasedOn="{StaticResource OriginalButton}">
         <Setter Property="Background" Value="White"></Setter>
     </Style>
+    <Style x:Key="OriginalButton.Icon.White" TargetType="Button" BasedOn="{StaticResource OriginalButton}">
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
+    </Style>
+    <Style x:Key="OriginalButton.Icon" TargetType="Button" BasedOn="{StaticResource OriginalButton}">
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
+    </Style>
 
-   
+    <Style x:Key="OriginalButton.Circle" TargetType="Button">
+        <Setter Property="Cursor"  Value="Hand"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="Foreground"  Value="#FF555555"></Setter>
+        <Setter Property="BorderBrush" Value="#FFC9C9C9"></Setter>
+        <Setter Property="Height" Value="38"></Setter>
+        <Setter Property="Width"  Value="94"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="15"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                          Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                          Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush"  Value="{StaticResource MainColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Foreground" Value="#FF333333"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="OriginalButton.Circle.White" TargetType="Button" BasedOn="{StaticResource OriginalButton.Circle}">
+        <Setter Property="Background" Value="White"></Setter>
+    </Style>
+    <Style x:Key="OriginalButton.Circle.Icon" TargetType="Button" BasedOn="{StaticResource OriginalButton.Circle}">
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
+    </Style>
+    <Style x:Key="OriginalButton.Circle.Icon.White" TargetType="Button" BasedOn="{StaticResource BaseButton.Circle}">
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
+    </Style>
     <!--#endregion-->
 
-    <!--#region Base按钮-->
+    <!--#region 基本按钮-->
     <Style x:Key="BaseButton" TargetType="Button">
         <Setter Property="Cursor"  Value="Hand"></Setter>
         <Setter Property="Background"  Value="Gray"></Setter>
@@ -57,7 +112,46 @@
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border" 
                             Background="{TemplateBinding Background}"
-                            CornerRadius="2"
+                            CornerRadius="2" 
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                          Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                          Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Opacity"  Value="0.8"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Opacity"  Value="1"/>
+                            <Setter TargetName="contentPresenter" Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="border" Property="BorderThickness"  Value="1"/>
+                            <Setter TargetName="border" Property="BorderBrush"  Value="#FFe6e6e6"/>
+                            <Setter TargetName="border" Property="Background" Value="#FFFBFBFB"></Setter>
+                            <Setter Property="Foreground"  Value="#FFC9C9C9"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BaseButton.Circle" TargetType="Button">
+        <Setter Property="Cursor"  Value="Hand"></Setter>
+        <Setter Property="Background"  Value="Gray"></Setter>
+        <Setter Property="Foreground"  Value="White"></Setter>
+        <Setter Property="Height" Value="38"></Setter>
+        <Setter Property="Width"  Value="94"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" 
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="15"
                             SnapsToDevicePixels="True">
                         <ContentPresenter x:Name="contentPresenter" 
                                           Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" 
@@ -79,23 +173,38 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="BaseButton.Circle.Icon" TargetType="Button" BasedOn="{StaticResource BaseButton.Circle}">
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
+    </Style>
     <Style x:Key="BaseButton.Icon" TargetType="Button" BasedOn="{StaticResource BaseButton}">
         <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
     </Style>
     <!--#endregion-->
 
-    <!--#region 百搭按钮-->
+    <!--#region 默认按钮-->
     <Style x:Key="DefaultButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
         <Setter Property="Background" Value="{StaticResource MainColor}"></Setter>
     </Style>
     <Style x:Key="DefaultButton.Icon" TargetType="Button" BasedOn="{StaticResource DefaultButton}">
         <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
     </Style>
+    <Style x:Key="DefaultButton.Circle" TargetType="Button" BasedOn="{StaticResource BaseButton.Circle}">
+        <Setter Property="Background" Value="{StaticResource MainColor}"></Setter>
+    </Style>
+    <Style x:Key="DefaultButton.Circle.Icon" TargetType="Button" BasedOn="{StaticResource DefaultButton.Circle}">
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
+    </Style>
     <!--#endregion-->
 
-    <!--#region 百搭按钮-->
+    <!--#region 普通按钮-->
     <Style x:Key="NormalButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
         <Setter Property="Background" Value="#FF1E9FFF"></Setter>
+    </Style>
+    <Style x:Key="NormalButton.Circle" TargetType="Button" BasedOn="{StaticResource BaseButton.Circle}">
+        <Setter Property="Background" Value="#FF1E9FFF"></Setter>
+    </Style>
+    <Style x:Key="NormalButton.Circle.Icon" TargetType="Button" BasedOn="{StaticResource NormalButton.Circle}">
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
     </Style>
     <Style x:Key="NormalButton.Icon" TargetType="Button" BasedOn="{StaticResource NormalButton}">
         <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
@@ -109,16 +218,12 @@
     <Style x:Key="DangerButton.Icon" TargetType="Button" BasedOn="{StaticResource DangerButton}">
         <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
     </Style>
-    <!--#endregion-->
-    
-    
-    <!--#region 图标按钮-->
-    <Style x:Key="OriginalButton.Icon.White" TargetType="Button" BasedOn="{StaticResource OriginalButton}">
-        <Setter Property="Background" Value="White"></Setter>
-        <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
+    <Style x:Key="DangerButton.Circle" TargetType="Button" BasedOn="{StaticResource BaseButton.Circle}">
+        <Setter Property="Background" Value="#FFFF5722"></Setter>
     </Style>
-    <Style x:Key="OriginalButton.Icon" TargetType="Button" BasedOn="{StaticResource OriginalButton}">
+    <Style x:Key="DangerButton.Circle.Icon" TargetType="Button" BasedOn="{StaticResource DangerButton.Circle}">
         <Setter Property="FontFamily" Value="{StaticResource IconFont}"></Setter>
     </Style>
     <!--#endregion-->
+    
 </ResourceDictionary>

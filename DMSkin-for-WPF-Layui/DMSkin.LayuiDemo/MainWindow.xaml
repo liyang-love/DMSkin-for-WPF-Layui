@@ -3,22 +3,65 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DMSkin.LayuiDemo"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="805">
-    <Grid>
+        mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown" Background="Transparent"
+        Title="MainWindow" Height="768" Width="1024">
+    <Window.Resources>
+        <Style TargetType="TabItem">
+            <Setter Property="Cursor"  Value="Hand"></Setter>
+            <Setter Property="BorderThickness" Value="1,1,0,1"></Setter>
+            <Setter Property="Foreground"  Value="Black"></Setter>
+            <Setter Property="BorderBrush" Value="#FFC9C9C9"></Setter>
+            <Setter Property="Height" Value="38"></Setter>
+            <Setter Property="Width"  Value="94"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border x:Name="border" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter x:Name="contentPresenter" 
+                                          Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush"  Value="{StaticResource MainColor}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="#FF333333"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="BorderBrush"  Value="#FFe6e6e6"/>
+                                <Setter TargetName="border" Property="Background" Value="#FFFBFBFB"></Setter>
+                                <Setter Property="Foreground"  Value="#FFC9C9C9"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="20" Background="White">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="0"></DropShadowEffect>
+        </Grid.Effect>
         <TabControl TabStripPlacement="Left">
             <TabItem Header="按钮">
                 <StackPanel>
                     <GroupBox Header="按钮主题" Margin="10" Padding="10">
-                        <WrapPanel>
-                            <Button Margin="5" Style="{StaticResource OriginalButton}" Content="原始按钮" ></Button>
-                            <Button Margin="5" Style="{StaticResource OriginalButton.White}" Content="原始按钮" ></Button>
-                            <Button Margin="5" Style="{StaticResource DefaultButton}" Content="默认按钮"></Button>
-                            <Button Margin="5" Style="{StaticResource NormalButton}"  Content="百搭按钮"></Button>
-                            <Button Margin="5" Style="{StaticResource DangerButton}" Content="警告按钮"></Button>
-                            <Button Margin="5" Style="{StaticResource BaseButton}" Content="禁用按钮"></Button>
-                        </WrapPanel>
+                        <StackPanel>
+                            <WrapPanel>
+                                <Button Margin="5" Style="{StaticResource OriginalButton}" Content="原始按钮" ></Button>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.White}" Content="原始按钮" ></Button>
+                                <Button Margin="5" Style="{StaticResource DefaultButton}" Content="默认按钮"></Button>
+                                <Button Margin="5" Style="{StaticResource NormalButton}"  Content="百搭按钮"></Button>
+                                <Button Margin="5" Style="{StaticResource DangerButton}" Content="警告按钮"></Button>
+                                <Button Margin="5" Style="{StaticResource BaseButton}" Content="基本按钮"></Button>
+                                <Button IsEnabled="False"  Margin="5" Style="{StaticResource BaseButton}" Content="禁用按钮" ></Button>
+                            </WrapPanel>
+                        </StackPanel>
                     </GroupBox>
                     <GroupBox Header="按钮尺寸" Margin="10" Padding="10">
                         <StackPanel>
@@ -37,29 +80,55 @@
                     <GroupBox Header="图标按钮" Margin="10" Padding="10">
                         <StackPanel>
                             <WrapPanel>
-                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon.White}" Content="&#xe63a;" FontSize="20"></Button>
                                 <Button Margin="5" Style="{StaticResource OriginalButton.Icon}" Content="&#xe63a;" FontSize="17"></Button>
-                                <Button Margin="5" Style="{StaticResource DangerButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
-                                <Button Margin="5" Style="{StaticResource NormalButton.Icon}"  Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon.White}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource DefaultButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button  Margin="5" Style="{StaticResource NormalButton.Icon}"  Content="&#xe63a;" FontSize="20"></Button>
                                 <Button Margin="5" Style="{StaticResource DangerButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
                                 <Button Margin="5" Style="{StaticResource BaseButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button IsEnabled="False"  Margin="5" Style="{StaticResource BaseButton.Icon}" Content="&#xe63a;" FontSize="20" ></Button>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon}" Content="&#xe63a;腾讯QQ" FontSize="17"></Button>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon.White}" Content="&#xe63a;DMSkin" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource DefaultButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource NormalButton.Icon}"  Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource DangerButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource BaseButton.Icon}" Content="    &#xe63a;&#13;腾讯QQ" FontSize="15"></Button>
                             </WrapPanel>
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Header="图文按钮" Margin="10" Padding="10">
+                    <GroupBox Header="圆角按钮" Margin="10" Padding="10">
                         <StackPanel>
                             <WrapPanel>
-                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon.White}" Content="&#xe63a;QQ" FontSize="20"></Button>
-                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon}" Content="&#xe63a;周杰伦" FontSize="17"></Button>
-                                <Button Margin="5" Style="{StaticResource DangerButton.Icon}" Content="&#xe63a;萧亚轩" FontSize="20"></Button>
-                                <Button Margin="5" Style="{StaticResource DangerButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
-                                <Button Margin="5" Style="{StaticResource BaseButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
-                                <Button Height="50" Margin="5" Style="{StaticResource NormalButton.Icon}"  Content="&#xe63a;&#13;腾讯QQ" FontSize="20"/>
-
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Circle}" Content="圆角" FontSize="17"></Button>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Circle.White}" Content="UI" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource DefaultButton.Circle}" Content="DM" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource NormalButton.Circle}"  Content="D" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource DangerButton.Circle}" Content="X - 计划" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource BaseButton.Circle}" Content="X" FontSize="20"></Button>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Circle.Icon}" Content="&#xe63a;" FontSize="17"></Button>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon.White}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource DefaultButton.Circle.Icon}" Content="&#xe63a;WPF" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource NormalButton.Circle.Icon}"  Content="&#xe63a;VIP" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource DangerButton.Circle.Icon}" Content="&#xe63a;警告" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource BaseButton.Circle.Icon}" Content="&#xe63a;X" FontSize="20"></Button>
                             </WrapPanel>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
+            </TabItem>
+            <TabItem Header="表单">
+            </TabItem>
+            <TabItem Header="导航面包屑">
+            </TabItem>
+            <TabItem Header="选项卡">
+            </TabItem>
+            <TabItem Header="进度条">
+            </TabItem>
+            <TabItem Header="面板">
             </TabItem>
         </TabControl>
     </Grid>

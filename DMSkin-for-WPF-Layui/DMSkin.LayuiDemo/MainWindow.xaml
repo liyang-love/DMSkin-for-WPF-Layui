@@ -46,6 +46,19 @@
                             </WrapPanel>
                         </StackPanel>
                     </GroupBox>
+                    <GroupBox Header="图文按钮" Margin="10" Padding="10">
+                        <StackPanel>
+                            <WrapPanel>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon.White}" Content="&#xe63a;QQ" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon}" Content="&#xe63a;周杰伦" FontSize="17"></Button>
+                                <Button Margin="5" Style="{StaticResource DangerButton.Icon}" Content="&#xe63a;萧亚轩" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource DangerButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource BaseButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Height="50" Margin="5" Style="{StaticResource NormalButton.Icon}"  Content="&#xe63a;&#13;腾讯QQ" FontSize="20"/>
+
+                            </WrapPanel>
+                        </StackPanel>
+                    </GroupBox>
                 </StackPanel>
             </TabItem>
         </TabControl>

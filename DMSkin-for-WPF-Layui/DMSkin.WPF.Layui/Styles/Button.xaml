@@ -2,46 +2,79 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:DMSkin.WPF.Layui.Styles">
 
-    
-    <!--#region Base按钮-->
-    <Style x:Key="BaseButton" TargetType="Button">
-        <Setter Property="Background" Value="Transparent"></Setter>
+    <SolidColorBrush x:Key="MainColor">#009688</SolidColorBrush>
+    <SolidColorBrush x:Key="BorderBrushColor">#FFC9C9C9</SolidColorBrush>
+
+    <!--#region 原始按钮-->
+    <Style x:Key="OriginalButton" TargetType="Button">
+        <Setter Property="Cursor"  Value="Hand"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="Foreground"  Value="#FF555555"></Setter>
         <Setter Property="BorderBrush" Value="#FFC9C9C9"></Setter>
         <Setter Property="Height" Value="38"></Setter>
-        <Setter Property="Width" Value="94"></Setter>
+        <Setter Property="Width"  Value="94"></Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ButtonBase}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" 
-                            BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
-                            CornerRadius="5"
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="2"
                             SnapsToDevicePixels="True">
-                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                        <ContentPresenter x:Name="contentPresenter" 
                                           Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" 
                                           Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                          Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="Button.IsDefaulted" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="{TemplateBinding Background}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{TemplateBinding BorderBrush}"/>
+                            <Setter TargetName="border" Property="BorderBrush"  Value="{StaticResource MainColor}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                            <Setter Property="Foreground" Value="#FF333333"/>
                         </Trigger>
-                        <Trigger Property="ToggleButton.IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="OriginalButton.White" TargetType="Button" BasedOn="{StaticResource OriginalButton}">
+        <Setter Property="Background" Value="White"></Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Base按钮-->
+    <Style x:Key="BaseButton" TargetType="Button">
+        <Setter Property="Cursor"  Value="Hand"></Setter>
+        <Setter Property="Background"  Value="Gray"></Setter>
+        <Setter Property="Foreground"  Value="White"></Setter>
+        <Setter Property="Height" Value="38"></Setter>
+        <Setter Property="Width"  Value="94"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" 
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="2"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                          Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                          Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Opacity"  Value="0.8"/>
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
-                            <Setter Property="Foreground" Value="#FF838383"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Opacity"  Value="1"/>
+                            <Setter TargetName="contentPresenter" Property="Opacity" Value="0.8"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -50,39 +83,21 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region 原始按钮-->
-    <Style x:Key="OriginalButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
-        <!--<Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="Button.IsDefaulted" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
-                        </Trigger>
-                        <Trigger Property="ToggleButton.IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
-                            <Setter Property="Foreground" Value="#FF838383"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>-->
+    <!--#region 百搭按钮-->
+    <Style x:Key="DefaultButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Background" Value="{StaticResource MainColor}"></Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region 百搭按钮-->
+    <Style x:Key="NormalButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Background" Value="#FF1E9FFF"></Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region 警告按钮-->
+    <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Background" Value="#FFFF5722"></Setter>
     </Style>
     <!--#endregion-->
     

@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DMSkin.LayuiDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="550" Width="805">
     <Grid>
         <TabControl TabStripPlacement="Left">
             <TabItem Header="按钮">
                 <StackPanel>
-                    <GroupBox Header="按钮主题">
+                    <GroupBox Header="按钮主题" Margin="20">
                         <WrapPanel>
-                            <Button Margin="5" Style="{StaticResource BaseButton}" Content="原始按钮" ></Button>
-                            <Button Content="默认按钮"></Button>
-                            <Button Content="百搭按钮"></Button>
-                            <Button Content="暖色按钮"></Button>
-                            <Button Content="警告按钮"></Button>
-                            <Button Content="禁用按钮"></Button>
+                            <Button Margin="5" Style="{StaticResource OriginalButton}" Content="原始按钮" ></Button>
+                            <Button Margin="5" Style="{StaticResource OriginalButton.White}" Content="原始按钮" ></Button>
+                            <Button Margin="5" Style="{StaticResource DefaultButton}" Content="默认按钮"></Button>
+                            <Button Margin="5" Style="{StaticResource NormalButton}"  Content="百搭按钮"></Button>
+                            <Button Margin="5" Style="{StaticResource DangerButton}" Content="警告按钮"></Button>
+                            <Button Style="{StaticResource BaseButton}" Content="禁用按钮"></Button>
                         </WrapPanel>
                     </GroupBox>
                 </StackPanel>

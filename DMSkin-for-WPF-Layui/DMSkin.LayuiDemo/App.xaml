@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF.Layui;component/Styles/DMSkin.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF.Layui;component/Styles/Button.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

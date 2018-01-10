@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="MainColor">#009688</SolidColorBrush>
+    <SolidColorBrush x:Key="BorderBrushColor">#FFC9C9C9</SolidColorBrush>
+
+    <FontFamily x:Key="IconFont">/DMSkin.WPF.Layui;component/Fonts/#iconfont</FontFamily>
+
+    <Button x:Key="xxx" FontFamily="/DMSkin.WPF.Layui;component/Fonts/#iconfont"></Button>
+</ResourceDictionary>

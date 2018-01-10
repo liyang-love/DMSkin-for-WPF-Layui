@@ -10,15 +10,41 @@
         <TabControl TabStripPlacement="Left">
             <TabItem Header="按钮">
                 <StackPanel>
-                    <GroupBox Header="按钮主题" Margin="20">
+                    <GroupBox Header="按钮主题" Margin="10" Padding="10">
                         <WrapPanel>
                             <Button Margin="5" Style="{StaticResource OriginalButton}" Content="原始按钮" ></Button>
                             <Button Margin="5" Style="{StaticResource OriginalButton.White}" Content="原始按钮" ></Button>
                             <Button Margin="5" Style="{StaticResource DefaultButton}" Content="默认按钮"></Button>
                             <Button Margin="5" Style="{StaticResource NormalButton}"  Content="百搭按钮"></Button>
                             <Button Margin="5" Style="{StaticResource DangerButton}" Content="警告按钮"></Button>
-                            <Button Style="{StaticResource BaseButton}" Content="禁用按钮"></Button>
+                            <Button Margin="5" Style="{StaticResource BaseButton}" Content="禁用按钮"></Button>
                         </WrapPanel>
+                    </GroupBox>
+                    <GroupBox Header="按钮尺寸" Margin="10" Padding="10">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Margin="5" Width="116" Height="44" Style="{StaticResource OriginalButton}" Content="按钮-大" ></Button>
+                                <Button Margin="5" Style="{StaticResource OriginalButton}" Content="按钮-中" ></Button>
+                                <Button Margin="5" Width="70" Height="30" Style="{StaticResource OriginalButton}" Content="按钮-小" ></Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Margin="5" Width="116" Height="44" Style="{StaticResource NormalButton}" Content="按钮-大" ></Button>
+                                <Button Margin="5" Style="{StaticResource NormalButton}" Content="按钮-中" ></Button>
+                                <Button Margin="5" Width="70" Height="30" Style="{StaticResource NormalButton}" Content="按钮-小" ></Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="图标按钮" Margin="10" Padding="10">
+                        <StackPanel>
+                            <WrapPanel>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon.White}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource OriginalButton.Icon}" Content="&#xe63a;" FontSize="17"></Button>
+                                <Button Margin="5" Style="{StaticResource DangerButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource NormalButton.Icon}"  Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource DangerButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
+                                <Button Margin="5" Style="{StaticResource BaseButton.Icon}" Content="&#xe63a;" FontSize="20"></Button>
+                            </WrapPanel>
+                        </StackPanel>
                     </GroupBox>
                 </StackPanel>
             </TabItem>

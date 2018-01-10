@@ -1,0 +1,27 @@
+﻿<Window x:Class="DMSkin.LayuiDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DMSkin.LayuiDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="按钮">
+                <StackPanel>
+                    <GroupBox Header="按钮主题">
+                        <WrapPanel>
+                            <Button Margin="5" Style="{StaticResource BaseButton}" Content="原始按钮" ></Button>
+                            <Button Content="默认按钮"></Button>
+                            <Button Content="百搭按钮"></Button>
+                            <Button Content="暖色按钮"></Button>
+                            <Button Content="警告按钮"></Button>
+                            <Button Content="禁用按钮"></Button>
+                        </WrapPanel>
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
